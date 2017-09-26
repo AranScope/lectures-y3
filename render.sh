@@ -1,1 +1,1 @@
-find ./ -iname "*.md" -type f -exec sh -c 'pandoc --template /home/aran/work/lectures/template.tex "${0}" -o "./$(dirname "{}")/pdf/$(basename "${0%.md}.pdf")"' {} \;
+find ./ -iname "*.md" -type f -exec sh -c 'pandoc --template /home/aran/work/lectures-y3/template.tex "${0}" -o "./$(dirname "{}")/pdf/$(basename "${0%.md}.pdf")"' {} \;

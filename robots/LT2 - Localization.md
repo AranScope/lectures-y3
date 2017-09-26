@@ -26,5 +26,10 @@
 - This is a recursive bayesian filter
 
 ## Bayes' rule
-
+$$    
+\begin{equation}
+    x+1 = 2 \\
+    y+2 = 3 
+\end{equation}
+$$
 ## Bayes' rule recap
