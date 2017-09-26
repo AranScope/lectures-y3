@@ -26,10 +26,30 @@
 - This is a recursive bayesian filter
 
 ## Bayes' rule
-$$    
+- Recall the conditional probability rule
 \begin{equation}
-    x+1 = 2 \\
-    y+2 = 3 
+    P(A\&B) = P(B|A)P(A) = P(A|B)P(B)
 \end{equation}
-$$
+
+- Rearranged this gives
+\begin{equation}
+    P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+\begin{equation}
+    P(Hypothesis|Data) = \frac{P(Data|Hypothesis)P(Hypothesis)}{P(Data)}
+\end{equation}
+
 ## Bayes' rule recap
+- Now we imagine a set of possible hypotheses which are
+    - Mutually exclusive (one and only one can be true)
+    - Exhaustive (one must be true)
+
+- In this case
+\begin{equation}
+    P(Data) = \sum_{i=1}^{N} P(Data|H_i)P(H_i)
+\end{equation}
+
+- Hence
+\begin{equation}
+    P(H_i|D) = \frac{P(D|H_i)P(H_i)}{\sum_{j=1}^{N} P(D|H_i)P(H_i)}
+\end{equation}
