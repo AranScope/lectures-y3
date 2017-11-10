@@ -1,7 +1,17 @@
-# find ./ -iname "*.md" -type f -exec sh -c 'pandoc --template /home/aran/work/uni/lectures-y3/template.tex "${0}" -o "./$(dirname "{}")/pdf/$(basename "${0%.md}.pdf")"' {} \;
-# pandoc --template /home/aran/work/uni/lectures-y3/template.tex *.md -o pdf/notes.pdf
+#!/bin/bash
 
-# find all directories that contain markdown files
-find . -maxdepth 1 -type d -not -path '*/\.*' -not -path '.' -exec sh -c 'pandoc --template ./template.tex "{}"/*.md -o "{}"/pdf/"{}".pdf' \;
+OUTPATH="pdf/"
 
-# --number-sections 
+inotifywait -r -m ./ -e moved_to -e modify |
+    while read path action file; do
+        FNAME="${file%.*}"
+        EXT=${file##*.}
+
+        if [[ $EXT = "md" ]]
+        then
+            INFNAME=${path}${file}
+            OUTFNAME=${path}${OUTPATH}${FNAME}
+            pandoc --template ./template.tex "${INFNAME}" -o "${OUTFNAME}.pdf" &
+            echo "Rendered ${OUTFNAME}"
+        fi
+    done

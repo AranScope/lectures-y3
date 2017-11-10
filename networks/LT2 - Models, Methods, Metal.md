@@ -58,11 +58,13 @@ It is still very common to fill a jumbo jet with hard drives for fantastic bandw
 If we have two data streams each with a bandwidth that is half that of the line, we can buffer the arriving data and when the buffer is full send it off at the line bandwidth. This means the output is idle for 50% of the time.
 
 ### Statistical Gain
+
 - Assume most users are not using full line bandwidth 24/7
 - Oversell bandwidth, e.g. selling 100 x 10Mbps when line rate is 100Mbps
 - Contention ratio, 50:1 -> 50 customers sharing the same bandwidth :(
 
 ## Virtual Circuits
+
 - Endpoints tell network to establish a connection
 - Network sets up a path to the destination, gives back identifying token
 - The token identifies a *"virtual circuit"* linking two endpoints
@@ -72,13 +74,15 @@ If we have two data streams each with a bandwidth that is half that of the line,
 - Network attempts to solve ordering and packet loss but there are no guarantees
 
 ## Datagram Services
+
 - Packet contains addressing information
 - Each packet considered seperate
 - Endpoints deal with loss, duplication and corruption
 - Might arrive, might not
-- Nedwork doesn't need to know about connections, it just routes packets
+- Network doesn't need to know about connections, it just routes packets
 
 ## Layering
+
 Applications generally want guarantees, knowing that if a file is sent it will arrive undamaged or you know if something went wrong.
 
 A network can be thought of as a **stack**, a succession of interfaces starting with services needed by real applications and getting closer to transistors and volts. Each layer provides services to those above it and makes use of services below it. Each task appears in only one layer.
@@ -113,6 +117,7 @@ The **Link Layer** moves data between one network element and the next. Concerne
 The **Physical Layer** consists of Ethernet over co-axial, twister pair, fibre, radio etc.
 
 ## TCP/IP Wins
+
 - Single transport service for both connections and datagrams
 - Full responsibility of the implementor to make TCP and UDP work
 - Exactly one network layer -- **IP**
@@ -122,6 +127,7 @@ The **Physical Layer** consists of Ethernet over co-axial, twister pair, fibre, 
 OSI lost because it tried to provide multiple transport services, there were also two different network layers for virtual circuit vs. datagra, and none of it interworked.
 
 ## Value Chain
+
 - Telcos sell a service with a service level agreement
 - ISPs are more "best efforts" and rely on statistical gain
 

@@ -1,0 +1,3 @@
+- check return values of binds etc.
+- add assertions
+- find the source of the segfault
